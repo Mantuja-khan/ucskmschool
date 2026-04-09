@@ -55,7 +55,6 @@ const About = () => {
                 </div> */}
               </div>
             </ScrollReveal>
-
             {/* Text Column */}
             <ScrollReveal delay={150}>
               <div className="space-y-6">

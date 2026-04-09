@@ -45,7 +45,7 @@ const INITIAL_FORM = {
 
 const collectionLabels: Record<CollectionKey, string> = {
   videos: "Videos",
-  blogs: "Articles",
+  blogs: "Publications",
   books: "Books",
   gallery: "Gallery",
 };

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { ArrowRight, Star, Youtube, X, Facebook, Linkedin, Instagram } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Star, X, Facebook, Linkedin, Instagram } from "lucide-react";
+import { getApiUrl, toAbsoluteMediaUrl } from "@/lib/api";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero_section.png";
 import portraitImg from "@/assets/speaker-portrait.jpg";
@@ -27,8 +28,33 @@ const stats = [
 ];
 
 const Index = () => {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [selectedTestimonial, setSelectedTestimonial] = useState<any | null>(null);
+  const [videos, setVideos] = useState<any[]>([]);
+  const [books, setBooks] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [videosRes, booksRes] = await Promise.all([
+          fetch(getApiUrl("/api/videos")),
+          fetch(getApiUrl("/api/books"))
+        ]);
+
+        if (videosRes.ok) {
+          const data = await videosRes.json();
+          setVideos(Array.isArray(data) ? data.slice(0, 3) : []);
+        }
+
+        if (booksRes.ok) {
+          const data = await booksRes.json();
+          setBooks(Array.isArray(data) ? data : []);
+        }
+      } catch (error) {
+        console.error("Failed to fetch data", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -65,17 +91,33 @@ const Index = () => {
               Inspiring positive change across the globe through visionary leadership, transformative keynotes, and deep educational expertise.
             </p>
             <div className="pt-2 flex flex-nowrap gap-4 items-center justify-center lg:justify-start">
-              <a href="https://www.youtube.com/@DRPRABHATKAUSHIK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white text-black rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200">
-                <Youtube size={24} />
+              <a href="https://www.facebook.com/prabhat.kaushik.bhiwadi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" 
+                  alt="Facebook" 
+                  className="w-full h-auto p-2"
+                />
               </a>
-              <a href="https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white text-black rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200">
-                <Instagram size={24} />
+              <a href="https://www.youtube.com/@DRPRABHATKAUSHIK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+                  alt="YouTube" 
+                  className="w-full h-auto"
+                />
               </a>
-              <a href="https://www.facebook.com/prabhat.kaushik.bhiwadi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white text-black rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200">
-                <Facebook size={24} />
+              <a href="https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" 
+                  alt="Instagram" 
+                  className="w-full h-auto"
+                />
               </a>
-              <a href="https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white text-black rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200">
-                <Linkedin size={24} />
+              <a href="https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
+                  alt="LinkedIn" 
+                  className="w-full h-auto"
+                />
               </a>
             </div>
           </div>
@@ -192,45 +234,35 @@ const Index = () => {
 
       {/* Books Section */}
       <ScrollReveal>
-        <section className="bg-background py-16 sm:py-20">
-          <div className="w-full px-4 sm:px-6 lg:px-8 text-center max-w-none">
+        <section className="bg-background py-10 sm:py-14">
+          <div className="px-4 sm:px-6 lg:px-12 text-center max-w-[1600px] mx-auto">
             <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center">Featured Books</h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-              Discover Prabhat's inspiring written works, offering deep insights into leadership, education, and personal growth.
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto text-sm sm:text-base">
+              Discover Prabhat's inspiring written works.
             </p>
-            <div className="mt-8 sm:mt-12 w-full overflow-hidden relative">
-              <div className="flex w-max gap-8 animate-marquee-books">
-                {[
-                  ...[
-                    { img: book1, title: "Think Practice & Grow Rich", description: "Build your mind strong." },
-                    { img: book2, title: "TRG ", description: "Insights into legal aspects of education." },
-                    { img: book3, title: "Sikhsa Prayogi ", description: "Must read for all parents." },
-                    { img: book4, title: "Legally Upright Vol.1", description: "Transformative leadership in the modern era." },
-                    { img: book5, title: "Rise & Thrive", description: "Wake up early to smell success." },
-                    { img: book6, title: "Legally Upright Vol.2", description: "Fund & Governance." },
-                    { img: book7, title: "Daily Spark", description: "Education beyond books ." }
-                  ],
-                  ...[
-                    { img: book1, title: "Think Practice & Grow Rich", description: "Build your mind strong." },
-                    { img: book2, title: "TRG ", description: "Insights into legal aspects of education." },
-                    { img: book3, title: "Sikhsa Prayogi ", description: "Must read for all parents." },
-                    { img: book4, title: "Legally Upright Vol.1", description: "Transformative leadership in the modern era." },
-                    { img: book5, title: "Rise & Thrive", description: "Wake up early to smell success." },
-                    { img: book6, title: "Legally Upright Vol.2", description: "Fund & Governance." },
-                    { img: book7, title: "Daily Spark", description: "Education beyond books ." }
-                  ]
-                ].map((book, i) => (
-                  <div key={i} className="w-[160px] sm:w-[200px] flex-shrink-0 flex flex-col items-center text-center group">
-                    <div className="w-full aspect-[3/4] relative flex items-center justify-center overflow-hidden p-2">
-                      <img src={book.img} alt={book.title} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 drop-shadow-lg" />
+            <div className={`mt-6 w-full ${books.length > 3 ? 'overflow-hidden relative' : ''}`}>
+              <div className={`flex ${books.length > 3 ? 'w-max gap-8 animate-marquee-books' : 'justify-center gap-10 flex-wrap'}`}>
+                {(books.length > 3 ? [...books, ...books] : books).map((book, i) => (
+                  <div key={i} className="w-[140px] sm:w-[180px] flex-shrink-0 flex flex-col items-center text-center group">
+                    <div className="w-full aspect-[3/4.5] flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={toAbsoluteMediaUrl(book.image)} 
+                        alt={book.title} 
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-md" 
+                      />
                     </div>
-                    <div className="pt-4 px-2">
-                      <h3 className="font-heading font-bold text-base sm:text-lg mb-1 leading-tight">{book.title}</h3>
-                      <p className="text-muted-foreground text-xs line-clamp-2">{book.description}</p>
+                    <div className="pt-2 w-full">
+                      <h3 className="font-heading font-bold text-sm sm:text-base mb-0.5 leading-tight">{book.title}</h3>
+                      <p className="text-muted-foreground text-[10px] sm:text-xs line-clamp-1">{book.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
+              {books.length === 0 && (
+                <div className="py-12 text-center text-muted-foreground w-full">
+                  <p>No featured books available at the moment.</p>
+                </div>
+              )}
             </div>
             <div className="mt-4 sm:hidden flex justify-center">
               <Link to="/achievements" className="btn-speaker-accent text-xs">
@@ -252,29 +284,47 @@ const Index = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                { id: "3ru7WBY4x8E", title: "Ignite Your Spark - Video 1" },
-                { id: "mN7OIZ6Cac4", title: "Transformation Journey" },
-                { id: "W57V5JrQwNg", title: "Leadership Insights" }
-              ].map((video, i) => (
-                <ScrollReveal key={video.id} delay={i * 100}>
-                  <button
-                    onClick={() => setSelectedVideo(video.id)}
-                    className="block w-full text-left aspect-video rounded-lg overflow-hidden shadow-lg bg-card relative group"
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300 flex items-center justify-center">
-                      <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <Youtube size={24} className="text-white fill-current" />
-                      </div>
-                    </div>
-                  </button>
-                </ScrollReveal>
-              ))}
+              {videos.length > 0 ? (
+                videos.map((video, i) => {
+                  const videoId = video.videoId;
+                  const videoUrl = videoId 
+                    ? `https://www.youtube.com/watch?v=${videoId}` 
+                    : toAbsoluteMediaUrl(video.video);
+                  const thumbUrl = videoId 
+                    ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` 
+                    : "/placeholder.svg"; // Fallback for uploaded videos
+
+                  return (
+                    <ScrollReveal key={video._id || i} delay={i * 100}>
+                      <a
+                        href={videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-card relative group cursor-pointer"
+                      >
+                        <img
+                          src={thumbUrl}
+                          alt={video.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300 flex items-center justify-center">
+                          <div className="w-12 sm:w-20 h-12 sm:h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <img 
+                              src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+                              alt="YouTube Logo" 
+                              className="w-full h-auto drop-shadow-lg"
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    </ScrollReveal>
+                  );
+                })
+              ) : (
+                <div className="col-span-full py-12 text-center text-muted-foreground">
+                  <p>No featured videos available.</p>
+                </div>
+              )}
             </div>
             <div className="mt-10 sm:mt-12 flex justify-center">
               <Link to="/blog" className="btn-speaker-accent text-sm sm:text-base group flex items-center gap-2">
@@ -329,21 +379,6 @@ const Index = () => {
         </section>
       </ScrollReveal>
 
-      {selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedVideo(null)}>
-          <div className="w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl relative" onClick={e => e.stopPropagation()}>
-            <button className="absolute top-4 right-4 text-white z-10 p-2 rounded-full bg-black/50 hover:bg-black/80 transition flex items-center justify-center cursor-pointer" onClick={() => setSelectedVideo(null)}>
-              <X size={24} />
-            </button>
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-              className="w-full h-full border-0 outline-none"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen>
-            </iframe>
-          </div>
-        </div>
-      )}
 
       {selectedTestimonial && (
         <div 

@@ -12,6 +12,8 @@ import poonam from "../assets/poonam.jpg"
 import rajkumar from "../assets/rajkumar.jpg"
 import ramkishan from "../assets/ramkishan.jpg"
 import depshikha from "../assets/deepshikha.jpg"
+import test1 from "../assets/test1.png"
+import test2 from "../assets/test2.png"
 type TestimonialType = {
   text: string;
   author: string;
@@ -35,9 +37,8 @@ const testimonials = [
 ];
 
 const imageTestimonials = [
-  "https://placehold.co/800x1200/png?text=Image+Testimonial+1",
-  "https://placehold.co/800x1200/png?text=Image+Testimonial+2",
-  "https://placehold.co/800x1200/png?text=Image+Testimonial+3",
+  test1,
+  test2,
 ];
 
 const Testimonials = () => {

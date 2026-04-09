@@ -105,6 +105,20 @@ const normalizePayload = (collection, body, files, req, currentItem = {}) => {
   return payload;
 };
 
+router.get('/:collection/:id', async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({ error: 'Database disconnected. Check IP whitelist on Atlas.' });
+  }
+  try {
+    const Model = getModel(req.params.collection);
+    const item = await Model.findById(req.params.id);
+    if (!item) return res.status(404).json({ error: 'Not found' });
+    res.json(item);
+  } catch (_error) {
+    res.status(500).json({ error: 'Database read error' });
+  }
+});
+
 router.get('/:collection', async (req, res) => {
   if (mongoose.connection.readyState !== 1) {
     return res.status(503).json({ error: 'Database disconnected. Check IP whitelist on Atlas.' });

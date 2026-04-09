@@ -1,12 +1,7 @@
+import { useEffect, useState } from "react";
 import { Award, BookOpen, Mic, Globe, Users, Trophy } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import book1 from "@/assets/book_1.png";
-import book2 from "@/assets/book_2.png";
-import book3 from "@/assets/book_3.png";
-import book4 from "@/assets/book_4.png";
-import book5 from "@/assets/book_5.png";
-import book6 from "@/assets/book_6.png";
-import book7 from "@/assets/book_7.png";
+import { getApiUrl, toAbsoluteMediaUrl } from "@/lib/api";
 
 const achievements = [
   { icon: Mic, title: "1,200+ Keynotes Delivered", desc: "From intimate boardrooms to auditoriums of thousands." },
@@ -17,7 +12,25 @@ const achievements = [
   { icon: Trophy, title: "National Education Award", desc: "Recognized for outstanding contributions to education and youth empowerment." },
 ];
 
-const Achievements = () => (
+const Achievements = () => {
+  const [books, setBooks] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const res = await fetch(getApiUrl("/api/books"));
+        if (res.ok) {
+          const data = await res.json();
+          setBooks(Array.isArray(data) ? data : []);
+        }
+      } catch (error) {
+        console.error("Failed to fetch books", error);
+      }
+    };
+    fetchBooks();
+  }, []);
+
+  return (
   <>
     {/* Hero Section */}
     <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
@@ -59,25 +72,27 @@ const Achievements = () => (
             Discover Prabhat's inspiring written works, offering deep insights into leadership, education, and personal growth.
           </p>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
-            {[
-              { img: book1, title: "Think Practice & Grow Rich", description: "Build your mind strong." },
-              { img: book2, title: "TRG ", description: "Insights into legal aspects of education." },
-              { img: book3, title: "Sikhsa Prayogi ", description: "Must read for all parents." },
-              { img: book4, title: "Legally Upright Vol.1", description: "Transformative leadership in the modern era." },
-              { img: book5, title: "Rise & Thrive", description: "Wake up early to smell success." },
-              { img: book6, title: "Legally Upright Vol.2", description: "Fund & Governance." },
-              { img: book7, title: "Daily Spark", description: "Education beyond books ." }
-            ].map((book, i) => (
-              <div key={i} className="flex flex-col items-center text-center group">
-                <div className="w-full aspect-[3/4] relative flex items-center justify-center overflow-hidden p-2">
-                  <img src={book.img} alt={book.title} className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 drop-shadow-lg" />
+            {books.length > 0 ? (
+              books.map((book, i) => (
+                <div key={book._id || i} className="flex flex-col items-center text-center group">
+                  <div className="w-full aspect-[3/4] relative flex items-center justify-center overflow-hidden p-2">
+                    <img 
+                      src={toAbsoluteMediaUrl(book.image)} 
+                      alt={book.title} 
+                      className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 drop-shadow-lg" 
+                    />
+                  </div>
+                  <div className="pt-4 px-2">
+                    <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
+                    <p className="text-muted-foreground text-sm line-clamp-3">{book.description}</p>
+                  </div>
                 </div>
-                <div className="pt-4 px-2">
-                  <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
-                  <p className="text-muted-foreground text-sm">{book.description}</p>
-                </div>
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-muted-foreground">
+                <p>No featured books available at the moment.</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -95,6 +110,7 @@ const Achievements = () => (
       </section>
     </ScrollReveal>
   </>
-);
+  );
+};
 
 export default Achievements;

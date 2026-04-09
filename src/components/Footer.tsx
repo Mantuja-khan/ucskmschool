@@ -7,12 +7,52 @@ const Footer = () => (
     <div className="bg-section-dark">
       <div className="container py-6 sm:py-8 flex flex-wrap justify-center gap-6 sm:gap-8">
         {[
-          { icon: Facebook, label: "Facebook", link: "https://www.facebook.com/prabhat.kaushik.bhiwadi" },
-          { icon: Youtube, label: "YouTube", link: "https://www.youtube.com/@DRPRABHATKAUSHIK" },
-          { icon: Linkedin, label: "LinkedIn", link: "https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/" },
-          { icon: Instagram, label: "Instagram", link: "https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp" },
+          { 
+            label: "Facebook", 
+            link: "https://www.facebook.com/prabhat.kaushik.bhiwadi",
+            customIcon: (
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" 
+                alt="Facebook" 
+                className="w-6 h-auto sm:w-8"
+              />
+            )
+          },
+          { 
+            label: "YouTube", 
+            link: "https://www.youtube.com/@DRPRABHATKAUSHIK", 
+            customIcon: (
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+                alt="YouTube" 
+                className="w-6 h-auto sm:w-8"
+              />
+            ) 
+          },
+          { 
+            label: "LinkedIn", 
+            link: "https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/",
+            customIcon: (
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
+                alt="LinkedIn" 
+                className="w-6 h-auto sm:w-8"
+              />
+            )
+          },
+          { 
+            label: "Instagram", 
+            link: "https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp",
+            customIcon: (
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" 
+                alt="Instagram" 
+                className="w-6 h-auto sm:w-8"
+              />
+            )
+          },
 
-        ].map(({ icon: Icon, label, link }) => (
+        ].map(({ label, link, customIcon }: any) => (
           <a
             key={label}
             href={link}
@@ -20,7 +60,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 text-section-dark-foreground/60 hover:text-secondary transition-colors"
           >
-            <Icon size={24} className="sm:w-7 sm:h-7" />
+            {customIcon}
             <span className="text-[10px] sm:text-xs uppercase tracking-wider">
               {label}
             </span>
@@ -52,7 +92,6 @@ const Footer = () => (
             <Link to="/blog" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Publications & Videos</Link>
             <Link to="/testimonials" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Testimonials</Link>
             <Link to="/contact" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Contact Us</Link>
-            <Link to="/admin" className="hover:text-secondary transition-colors font-semibold text-secondary mt-2 w-fit">» Admin Login</Link>
           </div>
         </div>
 

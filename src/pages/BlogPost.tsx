@@ -1,11 +1,38 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { posts } from "./Blog";
+import { ArrowLeft, Loader2 } from "lucide-react";
+import { getApiUrl, toAbsoluteMediaUrl } from "@/lib/api";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = posts.find((p) => p.slug === slug);
+  const [post, setPost] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(getApiUrl(`/api/blogs/${slug}`));
+        if (response.ok) {
+          const data = await response.json();
+          setPost(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch post", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-secondary" />
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -31,7 +58,9 @@ const BlogPost = () => {
             <span className="bg-secondary text-secondary-foreground px-2.5 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider rounded-full">
               {post.category}
             </span>
-            <span className="text-[10px] sm:text-xs text-section-dark-foreground/60">{post.date}</span>
+            <span className="text-[10px] sm:text-xs text-section-dark-foreground/60">
+              {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ""}
+            </span>
           </div>
           <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl font-bold animate-fade-up leading-tight max-w-3xl">
             {post.title}
@@ -43,7 +72,7 @@ const BlogPost = () => {
         <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
           <ScrollReveal>
             <img
-              src={post.image}
+              src={toAbsoluteMediaUrl(post.image)}
               alt={post.title}
               className="w-full rounded-lg shadow-lg mb-8 sm:mb-12"
             />
