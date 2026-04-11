@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Star, X, Facebook, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Star, X, Facebook, Linkedin, Instagram, BookOpen } from "lucide-react";
 import { getApiUrl, toAbsoluteMediaUrl } from "@/lib/api";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero_section.png";
@@ -244,16 +244,27 @@ const Index = () => {
               <div className={`flex ${books.length > 3 ? 'w-max gap-8 animate-marquee-books' : 'justify-center gap-10 flex-wrap'}`}>
                 {(books.length > 3 ? [...books, ...books] : books).map((book, i) => (
                   <div key={i} className="w-[140px] sm:w-[180px] flex-shrink-0 flex flex-col items-center text-center group">
-                    <div className="w-full aspect-[3/4.5] flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-[180px] sm:h-[240px] flex items-center justify-center overflow-hidden">
                       <img 
                         src={toAbsoluteMediaUrl(book.image)} 
                         alt={book.title} 
                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-md" 
                       />
                     </div>
-                    <div className="pt-2 w-full">
+                    <div className="pt-1.5 px-2 flex flex-col items-center">
                       <h3 className="font-heading font-bold text-sm sm:text-base mb-0.5 leading-tight">{book.title}</h3>
-                      <p className="text-muted-foreground text-[10px] sm:text-xs line-clamp-1">{book.description}</p>
+                      <p className="text-muted-foreground text-[10px] sm:text-xs line-clamp-1 mb-3">{book.description}</p>
+                      
+                      {book.pdfUrl && (
+                        <a 
+                          href={book.pdfUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="mt-1 flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-full text-[10px] sm:text-xs font-bold hover:bg-secondary/90 transition-colors shadow-sm"
+                        >
+                          <BookOpen size={12} /> Read Book
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

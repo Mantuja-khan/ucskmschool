@@ -31,85 +31,96 @@ const Achievements = () => {
   }, []);
 
   return (
-  <>
-    {/* Hero Section */}
-    <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110"
-        style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
-      />
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="relative container text-center text-white">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">Achievements & Books</h1>
-        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
-          Explore a legacy of transformation, global impact, and inspiring written works.
-        </p>
-      </div>
-    </section>
-
-    <section className="py-10 sm:py-14 md:py-20">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {achievements.map((a, i) => (
-            <ScrollReveal key={a.title} delay={i * 80}>
-              <div className="border border-border p-6 sm:p-8 hover:shadow-lg transition-shadow duration-300 group">
-                <a.icon size={28} className="text-secondary mb-3 sm:mb-4 group-hover:scale-105 transition-transform sm:w-8 sm:h-8" />
-                <h3 className="font-heading text-base sm:text-xl font-bold">{a.title}</h3>
-                <p className="text-muted-foreground text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">{a.desc}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Books Section */}
-    <ScrollReveal>
-      <section className="bg-background py-16 sm:py-20">
-        <div className="w-full px-4 sm:px-6 lg:px-8 text-center max-w-none">
-          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center">Featured Books</h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-            Discover Prabhat's inspiring written works, offering deep insights into leadership, education, and personal growth.
+    <>
+      {/* Hero Section */}
+      <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110"
+          style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative container text-center text-white">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">Achievements & Books</h1>
+          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            Explore a legacy of transformation, global impact, and inspiring written works.
           </p>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
-            {books.length > 0 ? (
-              books.map((book, i) => (
-                <div key={book._id || i} className="flex flex-col items-center text-center group">
-                  <div className="w-full aspect-[3/4] relative flex items-center justify-center overflow-hidden p-2">
-                    <img 
-                      src={toAbsoluteMediaUrl(book.image)} 
-                      alt={book.title} 
-                      className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 drop-shadow-lg" 
-                    />
-                  </div>
-                  <div className="pt-4 px-2">
-                    <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3">{book.description}</p>
-                  </div>
+        </div>
+      </section>
+
+      <section className="py-10 sm:py-14 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {achievements.map((a, i) => (
+              <ScrollReveal key={a.title} delay={i * 80}>
+                <div className="border border-border p-6 sm:p-8 hover:shadow-lg transition-shadow duration-300 group">
+                  <a.icon size={28} className="text-secondary mb-3 sm:mb-4 group-hover:scale-105 transition-transform sm:w-8 sm:h-8" />
+                  <h3 className="font-heading text-base sm:text-xl font-bold">{a.title}</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">{a.desc}</p>
                 </div>
-              ))
-            ) : (
-              <div className="col-span-full py-12 text-center text-muted-foreground">
-                <p>No featured books available at the moment.</p>
-              </div>
-            )}
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
-    </ScrollReveal>
 
-    <ScrollReveal>
-      <section className="bg-section-dark text-section-dark-foreground py-14 sm:py-20">
-        <div className="container text-center max-w-2xl">
-          <h2 className="font-heading text-xl sm:text-3xl md:text-4xl font-bold">
-            "The greatest achievement is not in never falling, but in rising every time we fall."
-          </h2>
-          <div className="w-12 h-0.5 bg-secondary mx-auto mt-4 sm:mt-6 mb-3 sm:mb-4" />
-          <p className="text-secondary font-heading uppercase tracking-wider text-xs sm:text-sm">— Dr. Prabhat Kaushik</p>
-        </div>
-      </section>
-    </ScrollReveal>
-  </>
+      {/* Books Section */}
+      <ScrollReveal>
+        <section className="bg-background py-16 sm:py-20">
+          <div className="w-full px-4 sm:px-6 lg:px-8 text-center max-w-none">
+            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center">Featured Books</h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+              Discover Prabhat's inspiring written works, offering deep insights into leadership, education, and personal growth.
+            </p>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
+              {books.length > 0 ? (
+                books.map((book, i) => (
+                  <div key={book._id || i} className="flex flex-col items-center text-center group">
+                    <div className="w-full h-[220px] sm:h-[300px] relative flex items-center justify-center overflow-hidden">
+                      <img
+                        src={toAbsoluteMediaUrl(book.image)}
+                        alt={book.title}
+                        className="w-full h-full object-contain relative z-10 hover:scale-110 transition-transform duration-500 drop-shadow-lg"
+                      />
+                    </div>
+                    <div className="pt-0.5 px-2 flex flex-col items-center">
+                      <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
+                      <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{book.description}</p>
+
+                      {book.pdfUrl && (
+                        <a
+                          href={book.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-6 py-2.5 bg-secondary text-white rounded-full text-sm font-bold hover:bg-secondary/90 transition-all hover:scale-105 shadow-md active:scale-95"
+                        >
+                          <BookOpen size={16} /> Read Full Book
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full py-12 text-center text-muted-foreground">
+                  <p>No featured books available at the moment.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section className="bg-section-dark text-section-dark-foreground py-14 sm:py-20">
+          <div className="container text-center max-w-2xl">
+            <h2 className="font-heading text-xl sm:text-3xl md:text-4xl font-bold">
+              "The greatest achievement is not in never falling, but in rising every time we fall."
+            </h2>
+            <div className="w-12 h-0.5 bg-secondary mx-auto mt-4 sm:mt-6 mb-3 sm:mb-4" />
+            <p className="text-secondary font-heading uppercase tracking-wider text-xs sm:text-sm">— Dr. Prabhat Kaushik</p>
+          </div>
+        </section>
+      </ScrollReveal>
+    </>
   );
 };
 
