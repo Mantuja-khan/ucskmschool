@@ -34,28 +34,30 @@ const testimonials = [
 
 ];
 
-const imageTestimonials = [
-  "1r3Wvfr5rHnknndkKpVR4gwzIBlekJkIW",
-  "1LX9N3ii3C-WTZ3Gte-yTKX57rEbcQQ_n",
-  "14rXV_zxxyv7olTMLyDnVQ4sQTTD3Ki4u",
-  "1ECi4i1lB5Jv8EEcWKLeejtW0qhHxrT84",
-  "1HFUIdGknqaw-VYLdXLHdsXq-07mFZ3Ck",
-  "1a5yI-F9hiGfIOzy2SuAikeh-9lKL-vks",
+const multiPageTestimonials = [
+  { pages: ["10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI", "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82"] },
+  { pages: ["1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE", "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo"] },
+  { 
+    pages: [
+      "1K5dvRpSpYtFaeU17IhaFgbcA24OU3A00", 
+      "1Bom1dBC0KJvIa6Brdc2qwrCkEW44-r79"
+    ] 
+  },
+  { pages: ["1a5yI-F9hiGfIOzy2SuAikeh-9lKL-vks", "1HFUIdGknqaw-VYLdXLHdsXq-07mFZ3Ck"] },
+  { pages: ["1ECi4i1lB5Jv8EEcWKLeejtW0qhHxrT84", "14rXV_zxxyv7olTMLyDnVQ4sQTTD3Ki4u"] },
+  { pages: ["1LX9N3ii3C-WTZ3Gte-yTKX57rEbcQQ_n", "1r3Wvfr5rHnknndkKpVR4gwzIBlekJkIW"] }
+];
+
+const singlePageTestimonials = [
   "1Os0ytuXLgE1GicO5VTDfMacAEBvX_zw6",
   "1iNzD_SLi0D2Aka25rU5DFXcaDjrG6FMd",
   "1mCszh8PqqIx_wptxd0fijDAQIJe53T-H",
   "169X-_pKSXp5g4mDig0ZbkZ_ucG1s-bV7",
   "1qzmw9GLNSxfSMRQGEyR2AceAzMiQFfgR",
-  "1Bom1dBC0KJvIa6Brdc2qwrCkEW44-r79",
   "1yfYwSc8gTmQBwCIkWqn48NrwSsMqpUGy",
-  "1K5dvRpSpYtFaeU17IhaFgbcA24OU3A00",
   "1jVBYzS9u_igSRmSuezrQr61TzZuoza0_",
   "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z",
-  "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo",
-  "1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE",
   "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh",
-  "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82",
-  "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI",
   "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ",
   "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp",
 ];
@@ -82,6 +84,47 @@ const Testimonials = () => {
         </div>
       </section>
       <section className="bg-background py-16 sm:py-20 border-t border-border">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="section-heading text-2xl sm:text-2xl md:text-4xl text-center">More Applause</h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+              Snapshots of feedback from organizers and attendees.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Multi-page grouped testimonials */}
+            {multiPageTestimonials.flatMap((group, groupIdx) => 
+              group.pages.map((imgId, pageIdx) => (
+                <ScrollReveal key={`${groupIdx}-${pageIdx}`} delay={(groupIdx + pageIdx) * 50}>
+                  <div 
+                    className="relative bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
+                    onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
+                  >
+                    <div className="absolute top-3 right-3 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-[10px] font-bold shadow-sm z-10">
+                      Page {pageIdx + 1}
+                    </div>
+                    <img src={getDriveImageUrl(imgId)} alt={`Testimonial Group ${groupIdx + 1} Page ${pageIdx + 1}`} className="w-full h-full object-contain bg-white/5" />
+                  </div>
+                </ScrollReveal>
+              ))
+            )}
+
+            {/* Single page testimonials at the bottom */}
+            {singlePageTestimonials.map((imgId, i) => (
+              <ScrollReveal key={`single-${i}`} delay={i * 100}>
+                <div 
+                  className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
+                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
+                >
+                  <img src={getDriveImageUrl(imgId)} alt={`Testimonial Single ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
         <div className="container max-w-6xl">
           <div className="columns-1 md:columns-2 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
             {testimonials.map((testimonial, i) => (
@@ -116,29 +159,6 @@ const Testimonials = () => {
                   </div>
                 </ScrollReveal>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="section-heading text-2xl sm:text-2xl md:text-4xl text-center">More Applause</h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-              Snapshots of feedback from organizers and attendees.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {imageTestimonials.map((imgId, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div 
-                  className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
-                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
-                >
-                  <img src={getDriveImageUrl(imgId)} alt={`Testimonial ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
-                </div>
-              </ScrollReveal>
             ))}
           </div>
         </div>

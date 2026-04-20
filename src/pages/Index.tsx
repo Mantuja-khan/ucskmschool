@@ -29,8 +29,19 @@ const stats = [
 
 const Index = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState<any | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [videos, setVideos] = useState<any[]>([]);
   const [books, setBooks] = useState<any[]>([]);
+
+  const singlePageTestimonials = [
+    "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ",
+    "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp",
+    "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh",
+    "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z",
+    "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI",
+  ];
+
+  const getDriveImageUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -390,6 +401,24 @@ const Index = () => {
         </section>
       </ScrollReveal>
 
+      {/* Single Page Image Testimonials Section */}
+      <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
+        <div className="container max-w-6xl">
+          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-10 sm:mb-12">Letters of Appreciation</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            {singlePageTestimonials.map((imgId, i) => (
+              <ScrollReveal key={i} delay={i * 50}>
+                <div 
+                  className="bg-card rounded-lg shadow-sm border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
+                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
+                >
+                  <img src={getDriveImageUrl(imgId)} alt={`Appreciation ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {selectedTestimonial && (
         <div 
@@ -417,6 +446,26 @@ const Index = () => {
               <h4 className="font-bold text-lg">{selectedTestimonial.author}</h4>
               <p className="text-sm text-muted-foreground">{selectedTestimonial.role}</p>
             </div>
+          </div>
+        </div>
+      )}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md shadow-2xl"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={32} />
+          </button>
+          <div className="max-w-5xl w-full max-h-[90vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={selectedImage} 
+              alt="Testimonial Full View" 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-zoom-in" 
+            />
           </div>
         </div>
       )}
