@@ -109,6 +109,10 @@
     @apply block w-12 h-1 bg-secondary mt-4 rounded-full;
   }
 
+  .text-center.section-heading::after {
+    @apply mx-auto;
+  }
+
   .page-hero {
     @apply relative min-h-[50vh] flex items-center bg-section-dark text-section-dark-foreground overflow-hidden;
   }

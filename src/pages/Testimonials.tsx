@@ -12,8 +12,6 @@ import poonam from "../assets/poonam.jpg"
 import rajkumar from "../assets/rajkumar.jpg"
 import ramkishan from "../assets/ramkishan.jpg"
 import depshikha from "../assets/deepshikha.jpg"
-import test1 from "../assets/test1.png"
-import test2 from "../assets/test2.png"
 type TestimonialType = {
   text: string;
   author: string;
@@ -37,12 +35,36 @@ const testimonials = [
 ];
 
 const imageTestimonials = [
-  test1,
-  test2,
+  "1r3Wvfr5rHnknndkKpVR4gwzIBlekJkIW",
+  "1LX9N3ii3C-WTZ3Gte-yTKX57rEbcQQ_n",
+  "14rXV_zxxyv7olTMLyDnVQ4sQTTD3Ki4u",
+  "1ECi4i1lB5Jv8EEcWKLeejtW0qhHxrT84",
+  "1HFUIdGknqaw-VYLdXLHdsXq-07mFZ3Ck",
+  "1a5yI-F9hiGfIOzy2SuAikeh-9lKL-vks",
+  "1Os0ytuXLgE1GicO5VTDfMacAEBvX_zw6",
+  "1iNzD_SLi0D2Aka25rU5DFXcaDjrG6FMd",
+  "1mCszh8PqqIx_wptxd0fijDAQIJe53T-H",
+  "169X-_pKSXp5g4mDig0ZbkZ_ucG1s-bV7",
+  "1qzmw9GLNSxfSMRQGEyR2AceAzMiQFfgR",
+  "1Bom1dBC0KJvIa6Brdc2qwrCkEW44-r79",
+  "1yfYwSc8gTmQBwCIkWqn48NrwSsMqpUGy",
+  "1K5dvRpSpYtFaeU17IhaFgbcA24OU3A00",
+  "1jVBYzS9u_igSRmSuezrQr61TzZuoza0_",
+  "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z",
+  "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo",
+  "1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE",
+  "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh",
+  "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82",
+  "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI",
+  "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ",
+  "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp",
 ];
+
+const getDriveImageUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
 
 const Testimonials = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState<TestimonialType | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <>
@@ -108,10 +130,13 @@ const Testimonials = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {imageTestimonials.map((imgSrc, i) => (
+            {imageTestimonials.map((imgId, i) => (
               <ScrollReveal key={i} delay={i * 100}>
-                <div className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4]">
-                  <img src={imgSrc} alt={`Testimonial ${i + 1}`} className="w-full h-full object-cover" />
+                <div 
+                  className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
+                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
+                >
+                  <img src={getDriveImageUrl(imgId)} alt={`Testimonial ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
                 </div>
               </ScrollReveal>
             ))}
@@ -145,6 +170,30 @@ const Testimonials = () => {
               <h4 className="font-bold text-lg">{selectedTestimonial.author}</h4>
               <p className="text-sm text-muted-foreground">{selectedTestimonial.role}</p>
             </div>
+          </div>
+        </div>
+      )}
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md shadow-2xl"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={32} />
+          </button>
+          <div
+            className="w-full max-w-5xl max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedImage} 
+              alt="Testimonial Full View" 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-zoom-in" 
+            />
           </div>
         </div>
       )}

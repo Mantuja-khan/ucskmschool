@@ -85,7 +85,6 @@ const Achievements = () => {
                     <div className="pt-0.5 px-2 flex flex-col items-center">
                       <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
                       <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{book.description}</p>
-
                       {book.pdfUrl && (
                         <a
                           href={book.pdfUrl}
