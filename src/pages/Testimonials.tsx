@@ -34,33 +34,35 @@ const testimonials = [
 
 ];
 
-const multiPageTestimonials = [
-  { pages: ["10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI", "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82"] },
-  { pages: ["1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE", "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo"] },
-  { 
-    pages: [
-      "1K5dvRpSpYtFaeU17IhaFgbcA24OU3A00", 
-      "1Bom1dBC0KJvIa6Brdc2qwrCkEW44-r79"
-    ] 
-  },
-  { pages: ["1a5yI-F9hiGfIOzy2SuAikeh-9lKL-vks", "1HFUIdGknqaw-VYLdXLHdsXq-07mFZ3Ck"] },
-  { pages: ["1ECi4i1lB5Jv8EEcWKLeejtW0qhHxrT84", "14rXV_zxxyv7olTMLyDnVQ4sQTTD3Ki4u"] },
-  { pages: ["1LX9N3ii3C-WTZ3Gte-yTKX57rEbcQQ_n", "1r3Wvfr5rHnknndkKpVR4gwzIBlekJkIW"] }
+// Image Testimonials IDs in order 1 to 23 (provided by user)
+const imageTestimonialIds = [
+  "1r3Wvfr5rHnknndkKpVR4gwzIBlekJkIW", // 1
+  "1LX9N3ii3C-WTZ3Gte-yTKX57rEbcQQ_n", // 2
+  "14rXV_zxxyv7olTMLyDnVQ4sQTTD3Ki4u", // 3
+  "1ECi4i1lB5Jv8EEcWKLeejtW0qhHxrT84", // 4
+  "1HFUIdGknqaw-VYLdXLHdsXq-07mFZ3Ck", // 5
+  "1a5yI-F9hiGfIOzy2SuAikeh-9lKL-vks", // 6
+  "1Os0ytuXLgE1GicO5VTDfMacAEBvX_zw6", // 7
+  "1iNzD_SLi0D2Aka25rU5DFXcaDjrG6FMd", // 8
+  "1mCszh8PqqIx_wptxd0fijDAQIJe53T-H", // 9
+  "169X-_pKSXp5g4mDig0ZbkZ_ucG1s-bV7", // 10
+  "1qzmw9GLNSxfSMRQGEyR2AceAzMiQFfgR", // 11
+  "1Bom1dBC0KJvIa6Brdc2qwrCkEW44-r79", // 12
+  "1yfYwSc8gTmQBwCIkWqn48NrwSsMqpUGy", // 13
+  "1K5dvRpSpYtFaeU17IhaFgbcA24OU3A00", // 14
+  "1jVBYzS9u_igSRmSuezrQr61TzZuoza0_", // 15
+  "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z", // 16
+  "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo", // 17
+  "1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE", // 18
+  "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh", // 19
+  "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82", // 20
+  "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI", // 21
+  "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ", // 22
+  "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp", // 23
 ];
 
-const singlePageTestimonials = [
-  "1Os0ytuXLgE1GicO5VTDfMacAEBvX_zw6",
-  "1iNzD_SLi0D2Aka25rU5DFXcaDjrG6FMd",
-  "1mCszh8PqqIx_wptxd0fijDAQIJe53T-H",
-  "169X-_pKSXp5g4mDig0ZbkZ_ucG1s-bV7",
-  "1qzmw9GLNSxfSMRQGEyR2AceAzMiQFfgR",
-  "1yfYwSc8gTmQBwCIkWqn48NrwSsMqpUGy",
-  "1jVBYzS9u_igSRmSuezrQr61TzZuoza0_",
-  "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z",
-  "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh",
-  "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ",
-  "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp",
-];
+// Display order: 23 down to 1
+const imageTestimonials = [...imageTestimonialIds].reverse();
 
 const getDriveImageUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
 
@@ -92,31 +94,13 @@ const Testimonials = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8">
-            {/* Multi-page grouped testimonials */}
-            {multiPageTestimonials.flatMap((group, groupIdx) => 
-              group.pages.map((imgId, pageIdx) => (
-                <ScrollReveal key={`${groupIdx}-${pageIdx}`} delay={(groupIdx + pageIdx) * 50}>
-                  <div 
-                    className="relative bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
-                    onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
-                  >
-                    <div className="absolute top-3 right-3 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-[10px] font-bold shadow-sm z-10">
-                      Page {pageIdx + 1}
-                    </div>
-                    <img src={getDriveImageUrl(imgId)} alt={`Testimonial Group ${groupIdx + 1} Page ${pageIdx + 1}`} className="w-full h-full object-contain bg-white/5" />
-                  </div>
-                </ScrollReveal>
-              ))
-            )}
-
-            {/* Single page testimonials at the bottom */}
-            {singlePageTestimonials.map((imgId, i) => (
-              <ScrollReveal key={`single-${i}`} delay={i * 100}>
+            {imageTestimonials.map((imgId, i) => (
+              <ScrollReveal key={i} delay={i * 50}>
                 <div 
                   className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
                   onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
                 >
-                  <img src={getDriveImageUrl(imgId)} alt={`Testimonial Single ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
+                  <img src={getDriveImageUrl(imgId)} alt={`Testimonial Snapshot ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
                 </div>
               </ScrollReveal>
             ))}
@@ -126,32 +110,23 @@ const Testimonials = () => {
 
       <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
         <div className="container max-w-7xl">
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
+          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-10 sm:mb-12">What People Say</h2>
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
             {testimonials.map((testimonial, i) => (
               <div key={i} className="break-inside-avoid mb-6 sm:mb-8">
                 <ScrollReveal delay={i * 100}>
-                  <div className="bg-card p-5 sm:p-6 rounded-xl shadow-md border border-border flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left group hover:-translate-y-1 transition-transform duration-300 h-fit">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-xl overflow-hidden border-[3px] border-secondary shadow-md flex-shrink-0">
+                  <div className="bg-card p-6 sm:p-8 rounded-xl shadow-md border border-border flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden border-[3px] border-secondary shadow-md flex-shrink-0 mb-4">
                       <img src={testimonial.image} alt={testimonial.author} className="w-full h-full object-cover" />
                     </div>
-                    <div className="flex flex-col flex-1 min-w-0 items-center sm:items-start">
-                      <div className="flex text-secondary mb-2 gap-1 justify-center sm:justify-start">
+                    <div className="flex flex-col flex-1 min-w-0 items-center">
+                      <div className="flex text-secondary mb-3 gap-1 justify-center">
                         {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} fill="currentColor" />)}
                       </div>
-                      <p className="text-muted-foreground italic text-xs sm:text-sm mb-4">
-                        {/* For small screens: truncate with Read More */}
-                        <span className="sm:hidden block">
-                          "{testimonial.text.length > 80 ? `${testimonial.text.slice(0, 80)}... ` : testimonial.text}"
-                          {testimonial.text.length > 80 && (
-                            <button onClick={() => setSelectedTestimonial(testimonial)} className="text-secondary font-semibold ml-1 cursor-pointer hover:underline text-xs">
-                              Read more
-                            </button>
-                          )}
-                        </span>
-                        {/* For larger screens: Full text */}
-                        <span className="hidden sm:block">"{testimonial.text}"</span>
+                      <p className="text-muted-foreground italic text-xs sm:text-sm leading-relaxed mb-6">
+                        "{testimonial.text}"
                       </p>
-                      <div className="mt-auto">
+                      <div className="mt-auto border-t border-border/50 pt-4 w-full">
                         <h4 className="font-bold text-foreground text-sm sm:text-base truncate">{testimonial.author}</h4>
                         <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">{testimonial.role}</p>
                       </div>
@@ -206,7 +181,7 @@ const Testimonials = () => {
             <X size={32} />
           </button>
           <div
-            className="w-full max-w-5xl max-h-[90vh] flex items-center justify-center"
+            className="w-full max-w-[95vw] max-h-[95vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img 

@@ -50,9 +50,24 @@ const About = () => {
                   alt="Dr. Prabhat Kaushik"
                   className="w-full rounded-2xl shadow-2xl border-8 border-white dark:border-muted/30"
                 />
-                {/* <div className="absolute -bottom-6 -right-6 hidden sm:block bg-secondary text-white p-6 rounded-2xl shadow-xl max-w-[200px]">
-                  <p className="font-heading font-bold text-lg leading-tight text-center">30+ Years of Excellence</p>
-                </div> */}
+                
+                <div className="mt-8 overflow-hidden">
+                  <h3 className="font-heading text-sm font-bold mb-3">Featured In:</h3>
+                  <div className="flex overflow-hidden">
+                    <div style={{ animation: "marquee 14s linear infinite" }} className="flex gap-3 whitespace-nowrap">
+                      {["Zee News", "TEDx Talks", "Education Today", "NDTV", "India Today", "Zee News", "TEDx Talks", "Education Today", "NDTV", "India Today"].map((name, i) => (
+                        <span key={i} className="bg-secondary px-3 py-1.5 text-[10px] font-heading uppercase tracking-wider text-white flex-shrink-0 font-bold">{name}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <style>{`
+                  @keyframes marquee {
+                    0%   { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                  }
+                `}</style>
               </div>
             </ScrollReveal>
             {/* Text Column */}

@@ -81,9 +81,9 @@
   }
 
   .btn-speaker {
-    @apply inline-flex items-center gap-2 border-2 border-foreground px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide rounded-full
-           hover:bg-secondary hover:border-secondary hover:text-secondary-foreground transition-all duration-300 active:scale-[0.97]
-           shadow-sm hover:shadow-lg;
+    @apply inline-flex items-center gap-2 bg-secondary border-2 border-secondary text-white px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide rounded-full
+           hover:shadow-xl hover:scale-[1.03] transition-all duration-300 active:scale-[0.97]
+           shadow-lg;
   }
 
   .btn-speaker-accent {
