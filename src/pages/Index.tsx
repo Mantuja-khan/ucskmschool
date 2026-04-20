@@ -22,7 +22,7 @@ import gaurav from "@/assets/gaurav.jpg";
 
 const stats = [
   { number: "120", label: "Presentations" },
-  { number: "20+", label: "Years Speaking" },
+  { number: "35+", label: "Years of Experience" },
   { number: "280", label: "Seminars" },
   { number: "18", label: "Countries" },
 ];
@@ -222,6 +222,25 @@ const Index = () => {
         `}</style>
       </section>
 
+      {/* Letters of Appreciation (Image Testimonials) */}
+      <section className="bg-background py-16 sm:py-20 border-t border-border">
+        <div className="container max-w-6xl">
+          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-10 sm:mb-12">Letters of Appreciation</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            {singlePageTestimonials.map((imgId, i) => (
+              <ScrollReveal key={i} delay={i * 50}>
+                <div 
+                  className="bg-card rounded-lg shadow-sm border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
+                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
+                >
+                  <img src={getDriveImageUrl(imgId)} alt={`Appreciation ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
       <ScrollReveal>
         <section className="bg-section-gray py-12 sm:py-16">
@@ -357,68 +376,6 @@ const Index = () => {
         </section>
       </ScrollReveal>
 
-      {/* Testimonials Section */}
-      <ScrollReveal>
-        <section className="bg-background py-16 sm:py-20 border-t border-border">
-          <div className="container max-w-6xl">
-            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-10 sm:mb-12">What People Say</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                { text: "I am privileged to grab the opportunity to work under the guidance of Dr. Prabhat Kaushik, which is always a great source of inspiration for everyone. You are really a potential factor in my life for providing me a positive outlook. I am really impressed by your motto of ‘busy bee pleasure’ which has always encouraged me to engage myself to do innovative work. The positive vibrant coming out of your motivational speeches inspired us to step ahead in our future. Thank you for being there for us as a guide, mentor and an advisor.", author: "Deepika Aggarwal", role: "", image: depshikha },
-                { text: "I had a chance to meet Dr. Kaushik in our school a few years back. Dr Prabhat, a well known educationist, he emerged as a man of deep knowledge, sincerity and hard working. He has devoted his life to the strengthening of education system in our country. His work on gifted children and slow learner is commendable. His passion or his work is evident by the time he puts his efforts. He has ventured into various aspects of of educational development, applying his global experiences and knowledge to give solution for problems like bullying and suggesting next generation teaching method.", author: "Pratima Singh", role: "Royal Oak International School", image: pratima },
-                { text: "Dr.Prabhat kaushik exhibits great leadership qualities. He always takes responsibility for the success of the people associated with him. He is visionary, fair and consistent in his judgment. He is a patient listener and helps everyone to solve their problem. I am happy to work with him.", author: "Gaurav Sharma", role: "", image: gaurav }
-              ].map((testimonial, i) => (
-                <div key={i} className="bg-card p-5 rounded-xl shadow-sm border border-border flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300 h-full min-h-[350px]">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-xl overflow-hidden border-[3px] border-secondary shadow-md mb-4 flex-shrink-0">
-                    <img src={testimonial.image} alt={testimonial.author} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex flex-col flex-1">
-                    <div className="flex text-secondary mb-3 gap-1 justify-center">
-                      {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} fill="currentColor" />)}
-                    </div>
-                    <div className="flex-1 flex flex-col justify-center mb-4">
-                      <p className="text-muted-foreground italic text-xs leading-relaxed">
-                        "{testimonial.text.length > 70 ? `${testimonial.text.slice(0, 70)}...` : testimonial.text}"
-                      </p>
-                      {testimonial.text.length > 70 && (
-                        <button 
-                          onClick={() => setSelectedTestimonial(testimonial)}
-                          className="text-secondary text-[10px] font-bold mt-2 hover:underline cursor-pointer"
-                        >
-                          Read More
-                        </button>
-                      )}
-                    </div>
-                    <div className="mt-auto border-t border-border/50 pt-3 w-full">
-                      <h4 className="font-bold text-foreground text-sm truncate">{testimonial.author}</h4>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* Single Page Image Testimonials Section */}
-      <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
-        <div className="container max-w-6xl">
-          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-10 sm:mb-12">Letters of Appreciation</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
-            {singlePageTestimonials.map((imgId, i) => (
-              <ScrollReveal key={i} delay={i * 50}>
-                <div 
-                  className="bg-card rounded-lg shadow-sm border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
-                  onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
-                >
-                  <img src={getDriveImageUrl(imgId)} alt={`Appreciation ${i + 1}`} className="w-full h-full object-contain bg-white/5" />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {selectedTestimonial && (
         <div 

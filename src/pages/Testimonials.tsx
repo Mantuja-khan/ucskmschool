@@ -84,14 +84,14 @@ const Testimonials = () => {
         </div>
       </section>
       <section className="bg-background py-16 sm:py-20 border-t border-border">
-        <div className="container max-w-6xl">
+        <div className="container max-w-7xl">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="section-heading text-2xl sm:text-2xl md:text-4xl text-center">More Applause</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
               Snapshots of feedback from organizers and attendees.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8">
             {/* Multi-page grouped testimonials */}
             {multiPageTestimonials.flatMap((group, groupIdx) => 
               group.pages.map((imgId, pageIdx) => (
@@ -125,8 +125,8 @@ const Testimonials = () => {
       </section>
 
       <section className="bg-section-gray py-16 sm:py-20 border-t border-border">
-        <div className="container max-w-6xl">
-          <div className="columns-1 md:columns-2 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
+        <div className="container max-w-7xl">
+          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 sm:gap-8 space-y-6 sm:space-y-8">
             {testimonials.map((testimonial, i) => (
               <div key={i} className="break-inside-avoid mb-6 sm:mb-8">
                 <ScrollReveal delay={i * 100}>

@@ -27,46 +27,46 @@ const Footer = () => {
       <div className="bg-section-dark">
         <div className="container py-6 sm:py-8 flex flex-wrap justify-center gap-6 sm:gap-8">
           {[
-            { 
-              label: "Facebook", 
+            {
+              label: "Facebook",
               link: "https://www.facebook.com/prabhat.kaushik.bhiwadi",
               customIcon: (
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" 
-                  alt="Facebook" 
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
+                  alt="Facebook"
                   className="w-6 h-auto sm:w-8"
                 />
               )
             },
-            { 
-              label: "YouTube", 
-              link: "https://www.youtube.com/@DRPRABHATKAUSHIK", 
+            {
+              label: "YouTube",
+              link: "https://www.youtube.com/@DRPRABHATKAUSHIK",
               customIcon: (
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
-                  alt="YouTube" 
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+                  alt="YouTube"
                   className="w-6 h-auto sm:w-8"
                 />
-              ) 
+              )
             },
-            { 
-              label: "LinkedIn", 
+            {
+              label: "LinkedIn",
               link: "https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/",
               customIcon: (
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
-                  alt="LinkedIn" 
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                  alt="LinkedIn"
                   className="w-6 h-auto sm:w-8"
                 />
               )
             },
-            { 
-              label: "Instagram", 
+            {
+              label: "Instagram",
               link: "https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp",
               customIcon: (
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" 
-                  alt="Instagram" 
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                  alt="Instagram"
                   className="w-6 h-auto sm:w-8"
                 />
               )
@@ -99,7 +99,7 @@ const Footer = () => {
               World-renowned Educationist, Keynote Speaker, and Leadership Coach. Inspiring positive change globally through deep educational expertise.
             </p>
             <p className="text-xs opacity-60">© {new Date().getFullYear()} Dr. Prabhat Kaushik.</p>
-            <p className="text-xs opacity-60 mt-1">All rights reserved.</p>
+            <p className="text-xs opacity-60 mt-1">Designed by Metaweb Kit</p>
           </div>
           <div>
             <h4 className="font-heading text-lg sm:text-xl text-nav-foreground mb-4">Quick Links</h4>
@@ -117,10 +117,10 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-sm">
               {books.length > 0 ? (
                 books.map((book) => (
-                  <a 
-                    key={book._id} 
-                    href={book.pdfUrl || "#"} 
-                    target="_blank" 
+                  <a
+                    key={book._id}
+                    href={book.pdfUrl || "#"}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-secondary hover:translate-x-1 transition-all w-fit flex items-center gap-2"
                   >
