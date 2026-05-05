@@ -5,8 +5,9 @@ import { Menu, X, Instagram } from "lucide-react";
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Achievements & Books", to: "/achievements" },
-  { label: "Publication & Videos", to: "/blog" },
+  { label: "Achievements", to: "/achievements" },
+  { label: "Books", to: "/books" },
+  { label: "Videos", to: "/blog" },
   { label: "Testimonials", to: "/testimonials" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },

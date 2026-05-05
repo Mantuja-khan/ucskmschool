@@ -18,16 +18,12 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110"
-          style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative container text-center text-white">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">About Dr. Prabhat Kaushik</h1>
-          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
-            A legacy of visionary leadership and educational excellence.
+      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-20 overflow-hidden bg-[#FAF7F2] border-b border-secondary/10">
+        <div className="relative container text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up text-[#C26E16]">About Dr. Prabhat Kaushik</h1>
+          <div className="w-16 h-1 bg-secondary mx-auto mb-4 rounded-full animate-fade-up" style={{ animationDelay: '50ms' }} />
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#8B5E3C] font-medium opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            A lifelong dedication to global educational strategy, institutional transformation, and nurturing gifted minds.
           </p>
         </div>
       </section>
@@ -50,7 +46,7 @@ const About = () => {
                   alt="Dr. Prabhat Kaushik"
                   className="w-full rounded-2xl shadow-2xl border-8 border-white dark:border-muted/30"
                 />
-                
+
                 <div className="mt-8 overflow-hidden">
                   <h3 className="font-heading text-sm font-bold mb-3">Featured In:</h3>
                   <div className="flex overflow-hidden">
@@ -79,12 +75,43 @@ const About = () => {
                 </div>
 
                 <div className="text-muted-foreground leading-relaxed text-sm sm:text-base space-y-4">
-                  <p>One of the most rewarded institutional strategist & globally renowned educationist, <strong className="text-foreground">Dr. Prabhat Kaushik</strong> is M.Sc., M.Ed., M.B.A.(HR), LLB. & Ph.D. on Gifted & Talented (one of the most meaningful research on gifted & talented in the world).</p>
-                  <p>He is internationally acclaimed <strong className="text-foreground">TRAINER AND ASSESSOR</strong> with Australia's highest qualification as Trainer & Assessor from Central Institute of Technology, Perth.</p>
-                  <p>His exposure includes prestigious institutions of USA such as MIT, Harvard, Hawaii & Rice Univ., Australia, England, Singapore, Japan, South Korea, Dubai, IIMs, CBSE, NCERT and Rotary International.</p>
-                  <p>For last 30 years Dr. Kaushik is highly sought after educationist for GIFTED & TALENTED and has been passionately working for this noble cause on millions of children, parents & teachers worldwide.</p>
-                  <p>Projects like <strong className="text-foreground">Institute for Gifted children (IGC)®</strong>, Child Guidance Clinics (CGC)® and Education Beyond Books® have been successful in total transformation of students and parents.</p>
-                  <p>He is a renowned author with 2 India Book of Records for his books ‘Shikshaprayogi’, Legally Upright and Rise & Thrive.</p>
+                  <p>
+                    One of the most awarded institutional strategists and a globally renowned educationist,
+                    <strong className="text-foreground"> Dr. Prabhat Kaushik</strong> holds M.Sc., M.Ed., M.B.A. (HR), LLB., and a Ph.D. in Gifted & Talented education.
+                    His doctoral research is considered one of the most meaningful and impactful contributions in the field of gifted and talented education worldwide,
+                    focusing on identifying, nurturing, and empowering unique learner potential.
+                  </p>
+
+                  <p>
+                    He is an internationally acclaimed <strong className="text-foreground">TRAINER AND ASSESSOR</strong>,
+                    holding Australia's highest qualification in training and assessment from the Central Institute of Technology, Perth.
+                    His training methodology combines global standards with practical classroom applications, enabling educators and institutions to achieve measurable excellence.
+                  </p>
+
+                  <p>
+                    His global exposure includes prestigious institutions such as MIT, Harvard, Hawaii, and Rice University in the USA,
+                    along with academic and professional engagements across Australia, England, Singapore, Japan, South Korea, and Dubai.
+                    In India, he has worked closely with reputed organizations like IIMs, CBSE, NCERT, and Rotary International,
+                    contributing to large-scale educational reforms and leadership development initiatives.
+                  </p>
+
+                  <p>
+                    For the past 30 years, Dr. Kaushik has been a highly sought-after educationist in the domain of GIFTED & TALENTED education.
+                    He has been passionately working towards transforming the lives of millions of children, parents, and teachers across the globe,
+                    focusing on holistic development, emotional intelligence, and future-ready learning skills.
+                  </p>
+
+                  <p>
+                    His visionary projects such as <strong className="text-foreground">Institute for Gifted Children (IGC)®</strong>,
+                    Child Guidance Clinics (CGC)®, and Education Beyond Books® have played a significant role in the complete transformation of students and parents.
+                    These initiatives aim to bridge the gap between traditional education and modern learning needs by introducing innovative and research-driven approaches.
+                  </p>
+
+                  <p>
+                    He is also a renowned author and thought leader, holding 2 India Book of Records for his impactful books
+                    ‘Shikshaprayogi’, ‘Legally Upright’, and ‘Rise & Thrive’.
+                    His writings reflect deep insights into education, personal growth, and societal development, inspiring readers to adopt a progressive and purpose-driven mindset.
+                  </p>
                 </div>
               </div>
             </ScrollReveal>

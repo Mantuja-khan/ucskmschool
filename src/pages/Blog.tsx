@@ -22,12 +22,12 @@ const Blog = () => {
           fetch(getApiUrl("/api/blogs")),
           fetch(getApiUrl("/api/videos"))
         ]);
-        
+
         if (postsRes.ok) {
           const postsData = await postsRes.json();
           setPosts(Array.isArray(postsData) ? postsData : []);
         }
-        
+
         if (videosRes.ok) {
           const videosData = await videosRes.json();
           setVideos(Array.isArray(videosData) ? videosData : []);
@@ -41,82 +41,78 @@ const Blog = () => {
 
   return (
     <>
-    <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110" 
-        style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
-      />
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="relative container text-center text-white">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">Publication & Videos</h1>
-        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
-          Insights, keynotes, and deep dives into leadership.
-        </p>
-      </div>
-    </section>
-    <section id="videos" className="bg-section-gray py-10 sm:py-14 md:py-20">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
-        <ScrollReveal>
-          <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12">Featured Videos</h2>
-        </ScrollReveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {videos.length > 0 ? (
-            videos.map((video, i) => {
-              const videoId = video.videoId;
-              const videoUrl = videoId 
-                ? `https://www.youtube.com/watch?v=${videoId}` 
-                : toAbsoluteMediaUrl(video.video);
-              const thumbUrl = videoId 
-                ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` 
-                : "/placeholder.svg";
-
-              return (
-                <ScrollReveal key={video._id || i} delay={i * 100}>
-                  <div className="aspect-video rounded-lg overflow-hidden shadow-lg bg-card relative">
-                    <a
-                      href={videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute inset-0 cursor-pointer group"
-                    >
-                      <img
-                        src={thumbUrl}
-                        alt={video.title || "Video thumbnail"}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300 flex items-center justify-center">
-                        <div className="w-12 sm:w-20 h-12 sm:h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
-                            alt="YouTube Logo" 
-                            className="w-full h-auto drop-shadow-lg"
-                          />
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </ScrollReveal>
-              );
-            })
-          ) : (
-            <div className="col-span-full py-12 text-center text-muted-foreground">
-              <p>No featured videos available.</p>
-            </div>
-          )}
+      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-20 overflow-hidden bg-[#FAF7F2] border-b border-secondary/10">
+        <div className="relative container text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up text-[#C26E16]">Videos </h1>
+          <div className="w-16 h-1 bg-secondary mx-auto mb-4 rounded-full animate-fade-up" style={{ animationDelay: '50ms' }} />
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#8B5E3C] font-medium opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            Keynotes, masterclasses, and national media coverage on TEDx, Zee News, and global educational forums.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+      <section id="videos" className="bg-section-gray py-10 sm:py-14 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
+          <ScrollReveal>
+            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12">Featured Videos</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {videos.length > 0 ? (
+              videos.map((video, i) => {
+                const videoId = video.videoId;
+                const videoUrl = videoId
+                  ? `https://www.youtube.com/watch?v=${videoId}`
+                  : toAbsoluteMediaUrl(video.video);
+                const thumbUrl = videoId
+                  ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                  : "/placeholder.svg";
 
-    <section className="py-10 sm:py-14 md:py-20">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
-        <ScrollReveal>
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-10 gap-4">
-            <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl m-0">Latest Publications</h2>
-            <a href="#videos" className="btn-speaker-accent text-xs sm:text-sm whitespace-nowrap">
-              <Play size={16} /> View Videos
-            </a>
+                return (
+                  <ScrollReveal key={video._id || i} delay={i * 100}>
+                    <div className="aspect-video rounded-lg overflow-hidden shadow-lg bg-card relative">
+                      <a
+                        href={videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 cursor-pointer group"
+                      >
+                        <img
+                          src={thumbUrl}
+                          alt={video.title || "Video thumbnail"}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300 flex items-center justify-center">
+                          <div className="w-12 sm:w-20 h-12 sm:h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+                              alt="YouTube Logo"
+                              className="w-full h-auto drop-shadow-lg"
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </ScrollReveal>
+                );
+              })
+            ) : (
+              <div className="col-span-full py-12 text-center text-muted-foreground">
+                <p>No featured videos available.</p>
+              </div>
+            )}
           </div>
-        </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="py-10 sm:py-14 md:py-20">
+        <div className="w-full px-4 sm:px-6 lg:px-8 max-w-none">
+          <ScrollReveal>
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-10 gap-4">
+              <h2 className="section-heading text-2xl sm:text-3xl md:text-4xl m-0">Latest Publications</h2>
+              <a href="#videos" className="btn-speaker-accent text-xs sm:text-sm whitespace-nowrap">
+                <Play size={16} /> View Videos
+              </a>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {posts.length > 0 ? (
               posts.map((post, i) => (
@@ -165,11 +161,11 @@ const Blog = () => {
               </div>
             )}
           </div>
-      </div>
-    </section>
+        </div>
+      </section>
 
 
-  </>
+    </>
   );
 };
 

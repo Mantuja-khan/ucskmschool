@@ -72,16 +72,13 @@ const Testimonials = () => {
 
   return (
     <>
-      <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110"
-          style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative container text-center text-white">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">Testimonials</h1>
-          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
-            Hear from the educators, leaders, and organizers who have experienced the transformation.
+      {/* Hero Section */}
+      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-20 overflow-hidden bg-[#FAF7F2] border-b border-secondary/10">
+        <div className="relative container text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up text-[#C26E16]">Testimonials & Appreciation</h1>
+          <div className="w-16 h-1 bg-secondary mx-auto mb-4 rounded-full animate-fade-up" style={{ animationDelay: '50ms' }} />
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#8B5E3C] font-medium opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            What esteemed institution heads, school founders, parents, and global organizers say about Dr. Kaushik's guidance.
           </p>
         </div>
       </section>
@@ -171,23 +168,23 @@ const Testimonials = () => {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md shadow-2xl"
+          className="fixed inset-0 z-[100] overflow-y-auto bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-10 flex justify-center items-start cursor-pointer shadow-2xl"
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full"
+            className="fixed top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full z-[110]"
             onClick={() => setSelectedImage(null)}
           >
             <X size={32} />
           </button>
-          <div
-            className="w-full max-w-[95vw] max-h-[95vh] flex items-center justify-center"
+          <div 
+            className="relative max-w-3xl w-full my-auto flex justify-center" 
             onClick={(e) => e.stopPropagation()}
           >
-            <img 
-              src={selectedImage} 
-              alt="Testimonial Full View" 
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-zoom-in" 
+            <img
+              src={`${selectedImage}=s0`}
+              alt="Testimonial Full View"
+              className="w-full h-auto object-contain rounded-xl shadow-2xl animate-zoom-in bg-white"
             />
           </div>
         </div>

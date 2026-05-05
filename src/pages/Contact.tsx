@@ -7,16 +7,13 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative pt-16 pb-12 sm:pt-32 sm:pb-24 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[6px] scale-110" 
-          style={{ backgroundImage: `url('https://i.pinimg.com/1200x/9d/d2/86/9dd28648454a2c26f43472351d521c33.jpg')` }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative container text-center text-white">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up">Contact Us</h1>
-          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
-            Invite Prabhat for keynotes, workshops, or media appearances.
+      {/* Hero Section */}
+      <section className="relative pt-16 pb-12 sm:pt-24 sm:pb-20 overflow-hidden bg-[#FAF7F2] border-b border-secondary/10">
+        <div className="relative container text-center">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading mb-3 sm:mb-4 animate-fade-up text-[#C26E16]">Connect & Collaborate</h1>
+          <div className="w-16 h-1 bg-secondary mx-auto mb-4 rounded-full animate-fade-up" style={{ animationDelay: '50ms' }} />
+          <p className="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-[#8B5E3C] font-medium opacity-90 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            Invite Dr. Prabhat Kaushik for global keynotes, leadership audits, institutional workshops, or media appearances.
           </p>
         </div>
       </section>
@@ -31,9 +28,9 @@ const Contact = () => {
             </p>
             <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-5">
               {[
-                { icon: MapPin, text: "New Delhi, India" },
-                { icon: Phone, text: "+91 98765 43210" },
-                { icon: Mail, text: "booking@prabhatkaushik.com" },
+                { icon: MapPin, text: "UCSKM Public School, Near Capital Mall, Bhiwadi, Rajasthan 301019" },
+                { icon: Phone, text: "+91 90019-97790" },
+                { icon: Mail, text: "vidyatree@gmail.com" },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-3">
                   <Icon size={18} className="text-secondary shrink-0 sm:w-5 sm:h-5" />

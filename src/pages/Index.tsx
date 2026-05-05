@@ -36,7 +36,7 @@ const Index = () => {
   const singlePageTestimonials = [
     "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ",
     "1o6kK9hXEV_ywI_Q29Ji0-Yrv7kXgsdVp",
-    "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh",
+    "1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE",
     "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z",
     "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI",
   ];
@@ -72,7 +72,6 @@ const Index = () => {
       {/* Hero */}
       <section className="relative w-full overflow-hidden flex items-center pt-10 sm:pt-16 pb-10 lg:pt-20 lg:pb-16 bg-[#FAF7F2]">
         <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2] to-transparent opacity-50 z-0" />
-
         <style>
           {`
           @keyframes float {
@@ -478,20 +477,23 @@ const Index = () => {
       )}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md shadow-2xl"
+          className="fixed inset-0 z-[100] overflow-y-auto bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-10 flex justify-center items-start cursor-pointer shadow-2xl"
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full"
+            className="fixed top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full z-[110]"
             onClick={() => setSelectedImage(null)}
           >
             <X size={32} />
           </button>
-          <div className="max-w-[95vw] w-full max-h-[95vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div 
+            className="relative max-w-3xl w-full my-auto flex justify-center" 
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
-              src={selectedImage}
+              src={`${selectedImage}=s0`}
               alt="Testimonial Full View"
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-zoom-in"
+              className="w-full h-auto object-contain rounded-xl shadow-2xl animate-zoom-in bg-white"
             />
           </div>
         </div>

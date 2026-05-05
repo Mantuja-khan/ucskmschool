@@ -27,8 +27,8 @@
     --ring: 28 100% 54%;
     --radius: 0.25rem;
 
-    --nav-bg: 0 0% 10%;
-    --nav-foreground: 0 0% 100%;
+    --nav-bg: 38 44% 96.5%;
+    --nav-foreground: 0 0% 0%;
     --section-dark: 0 0% 13%;
     --section-dark-foreground: 0 0% 100%;
     --section-gray: 0 0% 95%;
@@ -73,11 +73,24 @@
   }
 
   .nav-link {
-    @apply uppercase text-xs tracking-widest font-medium text-nav-foreground hover:text-secondary transition-colors duration-200;
+    @apply uppercase text-xs tracking-widest font-semibold text-nav-foreground relative pb-1 transition-colors duration-200 hover:text-nav-foreground;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  .nav-link-active::after {
+    @apply scale-x-100;
   }
 
   .nav-link-active {
-    @apply text-secondary;
+    @apply text-nav-foreground;
   }
 
   .btn-speaker {
