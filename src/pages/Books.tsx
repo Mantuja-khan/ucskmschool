@@ -40,14 +40,7 @@ const Books = () => {
       {/* Books Grid Section */}
       <section className="bg-background py-16 sm:py-24">
         <div className="container">
-          <ScrollReveal>
-            <div className="text-center mb-12 sm:mb-16">
-              <span className="bg-secondary/10 text-secondary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                Literature & Wisdom
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold font-heading mt-4">Inspiring Publications</h2>
-            </div>
-          </ScrollReveal>
+
 
           {loading ? (
             <div className="flex justify-center py-12">
