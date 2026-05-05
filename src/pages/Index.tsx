@@ -70,8 +70,8 @@ const Index = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative w-full overflow-hidden flex items-start pt-8 sm:pt-24 pb-12 lg:pt-32 lg:pb-16 bg-black">
-        <div className="absolute inset-0 bg-black" />
+      <section className="relative w-full overflow-hidden flex items-center pt-10 sm:pt-16 pb-10 lg:pt-20 lg:pb-16 bg-[#FAF7F2]">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2] to-transparent opacity-50 z-0" />
 
         <style>
           {`
@@ -91,39 +91,61 @@ const Index = () => {
           .animate-marquee-books:hover { animation-play-state: paused; }
         `}
         </style>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start">
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left: Content */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 order-2 lg:order-1">
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading leading-[1.1] text-[#C26E16] drop-shadow-sm">
+                Empowering Minds, <br className="hidden lg:block" /> Transforming Horizons
+              </h1>
+              
+              {/* Decorative Separator like in herosection.jpeg */}
+              <div className="flex items-center justify-center lg:justify-start gap-4 py-2">
+                <div className="text-[#C26E16] opacity-80 flex items-center gap-1">
+                  <svg width="120" height="24" viewBox="0 0 120 24" fill="currentColor" className="w-32 sm:w-48">
+                    <path d="M10 12C10 12 15 8 20 8C25 8 30 12 30 12C30 12 25 16 20 16C15 16 10 12 10 12Z" opacity="0.3" />
+                    <path d="M40 12L35 9V15L40 12Z" />
+                    <path d="M45 12L40 9V15L45 12Z" />
+                    <path d="M50 12L45 9V15L50 12Z" />
+                    <circle cx="60" cy="12" r="2" />
+                    <path d="M70 12L75 9V15L70 12Z" />
+                    <path d="M75 12L80 9V15L75 12Z" />
+                    <path d="M80 12L85 9V15L80 12Z" />
+                    <path d="M110 12C110 12 105 8 100 8C95 8 90 12 90 12C90 12 95 16 100 16C105 16 110 12 110 12Z" opacity="0.3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
 
-          {/* Left: Motivation Line & CTA */}
-          <div className="text-white space-y-6 lg:pr-10 lg:pt-10 order-2 lg:order-1 text-center lg:text-left">
-            <h1 className="text-2xl sm:text-5xl md:text-6xl font-bold font-heading leading-[1.1] drop-shadow-lg">
-              Empowering Minds, <br className="hidden lg:block" /> <span className="text-secondary">Transforming Horizons</span>
-            </h1>
-            <p className="text-base sm:text-lg text-gray-200 max-w-lg mx-auto lg:mx-0 drop-shadow-md">
+            <p className="text-lg sm:text-xl text-[#8B5E3C] max-w-lg font-medium leading-relaxed drop-shadow-sm">
               Inspiring positive change across the globe through visionary leadership, transformative keynotes, and deep educational expertise.
             </p>
-            <div className="pt-2 flex flex-nowrap gap-4 items-center justify-center lg:justify-start">
-              <a href="https://www.facebook.com/prabhat.kaushik.bhiwadi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+
+            <div className="pt-4 flex flex-nowrap gap-4 items-center justify-center lg:justify-start">
+              <a href="https://www.facebook.com/prabhat.kaushik.bhiwadi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-sm hover:shadow-md border border-[#C26E16]/10 p-2">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
                   alt="Facebook"
                   className="w-full h-auto p-2"
                 />
               </a>
-              <a href="https://www.youtube.com/@DRPRABHATKAUSHIK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+              <a href="https://www.youtube.com/@DRPRABHATKAUSHIK" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-sm hover:shadow-md border border-[#C26E16]/10 p-2">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
                   alt="YouTube"
                   className="w-full h-auto"
                 />
               </a>
-              <a href="https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+              <a href="https://www.instagram.com/prabhatkaushik.vidyatree?igsh=eDN5bHFyM2xya2hp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-sm hover:shadow-md border border-[#C26E16]/10 p-2">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
                   alt="Instagram"
                   className="w-full h-auto"
                 />
               </a>
-              <a href="https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-md hover:bg-gray-200 p-2">
+              <a href="https://www.linkedin.com/in/dr-prabhat-kaushik-82913720/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full hover:scale-110 transition-transform shadow-sm hover:shadow-md border border-[#C26E16]/10 p-2">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
                   alt="LinkedIn"
@@ -133,36 +155,37 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right: Main Image & Floating Badges */}
-          <div className="relative w-full flex flex-col items-center justify-start order-1 lg:order-2">
+          {/* Right: Image */}
+          <div className="relative w-full flex flex-col items-center justify-center order-1 lg:order-2">
             <div className="relative z-10 flex flex-col items-center justify-center">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[600px] sm:h-[600px] bg-white/50 rounded-full blur-[90px] sm:blur-[150px] pointer-events-none z-0"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] bg-white/70 rounded-full blur-[50px] sm:blur-[80px] pointer-events-none z-0"></div>
+              {/* Soft glow behind portrait */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] sm:w-[450px] sm:h-[450px] bg-[#C26E16]/10 rounded-full blur-[60px] sm:blur-[100px] pointer-events-none z-0"></div>
+              
               <img
                 src={mainImg}
                 alt="Dr. Prabhat Kaushik"
-                className="relative z-10 w-auto h-[250px] sm:h-[450px] object-cover rounded-lg shadow-md"
+                className="relative z-10 w-auto h-[250px] sm:h-[450px] lg:h-[500px] object-contain drop-shadow-2xl"
               />
-              <div className="bg-[#FF9933] text-white font-bold px-6 py-2 rounded shadow-md -mt-4 z-20">
+              
+              {/* Subtitle tag beneath portrait */}
+              <div className="bg-[#C26E16] text-white font-bold px-8 py-2.5 rounded-full shadow-lg -mt-6 z-20 border-2 border-white/20">
                 Dr. Prabhat Kaushik
               </div>
             </div>
 
-            <div className="absolute inset-0 z-20 pointer-events-none block">
-              <div className="absolute top-[5%] sm:top-[10%] left-[0%] sm:left-[0%] bg-white/90 backdrop-blur-sm border border-gray-100 text-foreground px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-sm shadow-sm animate-float-1">
+            {/* Floating Badges - updated to match new style */}
+            <div className="absolute inset-0 z-20 pointer-events-none hidden sm:block">
+              <div className="absolute top-[10%] left-[5%] bg-white/90 backdrop-blur-sm border border-[#C26E16]/20 text-[#C26E16] px-4 py-2 rounded-full text-sm font-bold shadow-md animate-float-1">
                 School Principal
               </div>
-              <div className="absolute top-[25%] sm:top-[30%] right-[-5%] sm:right-[-5%] bg-white/90 backdrop-blur-sm border border-gray-100 text-foreground px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-sm shadow-sm animate-float-2">
+              <div className="absolute top-[30%] right-[0%] bg-white/90 backdrop-blur-sm border border-[#C26E16]/20 text-[#C26E16] px-4 py-2 rounded-full text-sm font-bold shadow-md animate-float-2">
                 Keynote Speaker
               </div>
-              <div className="absolute bottom-[25%] sm:bottom-[20%] left-[-5%] sm:left-[-5%] bg-white/90 backdrop-blur-sm border border-gray-100 text-foreground px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-sm shadow-sm animate-float-3">
+              <div className="absolute bottom-[25%] left-[0%] bg-white/90 backdrop-blur-sm border border-[#C26E16]/20 text-[#C26E16] px-4 py-2 rounded-full text-sm font-bold shadow-md animate-float-3">
                 Gifted & Talented
               </div>
-              <div className="absolute bottom-[10%] right-[0%] sm:right-[0%] bg-white/90 backdrop-blur-sm border border-gray-100 text-foreground px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-sm shadow-sm animate-float-1" style={{ animationDelay: '1.2s' }}>
+              <div className="absolute bottom-[10%] right-[5%] bg-white/90 backdrop-blur-sm border border-[#C26E16]/20 text-[#C26E16] px-4 py-2 rounded-full text-sm font-bold shadow-md animate-float-1" style={{ animationDelay: '1.2s' }}>
                 Zee News Head
-              </div>
-              <div className="absolute top-[10%] sm:top-[5%] right-[10%] sm:right-[20%] bg-white/90 backdrop-blur-sm border border-gray-100 text-foreground px-2 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-sm shadow-sm animate-float-2" style={{ animationDelay: '0.8s' }}>
-                Master Trainer
               </div>
             </div>
           </div>
@@ -213,7 +236,6 @@ const Index = () => {
             </Link>
           </ScrollReveal>
         </div>
-
         <style>{`
           @keyframes marquee {
             0%   { transform: translateX(0); }
@@ -245,7 +267,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
       {/* Testimonials Section (Text Testimonials) */}
       <ScrollReveal>
         <section className="bg-section-gray py-16 sm:py-20 border-t border-border">

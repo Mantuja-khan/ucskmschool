@@ -11,10 +11,8 @@ const achievements = [
   { icon: Users, title: "2M+ Lives Touched", desc: "Through live events, workshops, news coverage, and mentorship programs." },
   { icon: Trophy, title: "National Education Award", desc: "Recognized for outstanding contributions to education and youth empowerment." },
 ];
-
 const Achievements = () => {
   const [books, setBooks] = useState<any[]>([]);
-
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -85,6 +83,7 @@ const Achievements = () => {
                     <div className="pt-0.5 px-2 flex flex-col items-center">
                       <h3 className="font-heading font-bold text-xl mb-2">{book.title}</h3>
                       <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{book.description}</p>
+
                       {book.pdfUrl && (
                         <a
                           href={book.pdfUrl}
