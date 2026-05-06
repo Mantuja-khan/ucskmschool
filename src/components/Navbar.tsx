@@ -20,8 +20,8 @@ const Navbar = () => {
   return (
     <nav className="bg-nav-bg sticky top-0 z-50">
       <div className="container flex items-center justify-between py-3 sm:py-4">
-        <Link to="/" className="font-heading text-xl sm:text-2xl text-nav-foreground">
-          Dr. Prabhat <span className="font-light italic text-secondary">Kaushik</span>
+        <Link to="/" className="font-heading text-xl sm:text-2xl text-secondary">
+          Dr. Prabhat <span className="font-light italic">Kaushik</span>
         </Link>
 
         {/* Desktop */}

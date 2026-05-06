@@ -73,12 +73,12 @@
   }
 
   .nav-link {
-    @apply uppercase text-xs tracking-widest font-semibold text-nav-foreground relative pb-1 transition-colors duration-200 hover:text-nav-foreground;
+    @apply uppercase text-xs tracking-widest font-semibold text-[#C26E16] relative pb-1 transition-colors duration-200 hover:text-[#C26E16];
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 origin-left transition-transform duration-300;
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-[#C26E16] scale-x-0 origin-left transition-transform duration-300;
   }
 
   .nav-link:hover::after {
@@ -90,7 +90,7 @@
   }
 
   .nav-link-active {
-    @apply text-nav-foreground;
+    @apply text-[#C26E16];
   }
 
   .btn-speaker {

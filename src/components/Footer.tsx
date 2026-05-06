@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <>
       {/* Social bar */}
-      <div className="bg-section-dark">
+      <div className="bg-[#FAF7F2] border-t border-[#C26E16]/15">
         <div className="container py-6 sm:py-8 flex flex-wrap justify-center gap-6 sm:gap-8">
           {[
             {
@@ -77,7 +77,7 @@ const Footer = () => {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 text-section-dark-foreground/60 hover:text-secondary transition-colors"
+              className="flex flex-col items-center gap-2 text-black/70 hover:text-[#C26E16] transition-all hover:scale-105 duration-300"
             >
               {customIcon}
               <span className="text-[10px] sm:text-xs uppercase tracking-wider">
@@ -89,11 +89,11 @@ const Footer = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-footer-bg text-footer-foreground border-t border-border/10">
+      <footer className="bg-[#FAF7F2] text-black/80 border-t border-[#C26E16]/15">
         <div className="container py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           <div>
-            <h4 className="font-heading text-xl sm:text-2xl text-nav-foreground mb-4">
-              Dr. Prabhat <span className="italic font-light text-secondary">Kaushik</span>
+            <h4 className="font-heading text-xl sm:text-2xl text-secondary mb-4">
+              Dr. Prabhat <span className="italic font-light">Kaushik</span>
             </h4>
             <p className="text-sm leading-relaxed mb-6 opacity-80 pr-4">
               World-renowned Educationist, Keynote Speaker, and Leadership Coach. Inspiring positive change globally through deep educational expertise.
@@ -104,12 +104,12 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg sm:text-xl text-nav-foreground mb-4">Quick Links</h4>
             <div className="flex flex-col gap-3 text-sm">
-              <Link to="/about" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">About</Link>
-              <Link to="/career" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Career</Link>
-              <Link to="/achievements" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Achievements & Books</Link>
-              <Link to="/blog" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Publications & Videos</Link>
-              <Link to="/testimonials" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Testimonials</Link>
-              <Link to="/contact" className="hover:text-secondary hover:translate-x-1 transition-all w-fit">Contact Us</Link>
+              <Link to="/about" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">About</Link>
+              <Link to="/achievements" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">Achievements</Link>
+              <Link to="/books" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">Books</Link>
+              <Link to="/blog" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">Videos</Link>
+              <Link to="/testimonials" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">Testimonials</Link>
+              <Link to="/contact" className="hover:text-[#C26E16] hover:translate-x-1 transition-all w-fit">Contact Us</Link>
             </div>
           </div>
           <div>

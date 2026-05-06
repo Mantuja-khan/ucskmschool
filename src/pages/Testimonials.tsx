@@ -54,7 +54,6 @@ const imageTestimonialIds = [
   "1n1bWSMZJqCTdLtbaNBohpRWaZZHnfU6Z", // 16
   "1FNDwDUjpVTbtFEoOzrT26Oegkl9aXTLo", // 17
   "1NbGm-rw77w7_OOTjvJWnh0ZXp_zybNEE", // 18
-  "1bEfuDYI8BYFqObJbi4t_NsYmz8lSxHUh", // 19
   "1KC0aaVmp0w87F1KC2xSsoIlFOMBO-A82", // 20
   "10Nx2VN-koCXIP1VkxH73WJsuDDb35TZI", // 21
   "1mqqpQCpuVRNnlCALrBpcyGnBt3H6xBIQ", // 22
@@ -93,7 +92,7 @@ const Testimonials = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8">
             {imageTestimonials.map((imgId, i) => (
               <ScrollReveal key={i} delay={i * 50}>
-                <div 
+                <div
                   className="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:scale-105 transition-transform duration-300 aspect-[3/4] cursor-pointer"
                   onClick={() => setSelectedImage(getDriveImageUrl(imgId))}
                 >
@@ -177,8 +176,8 @@ const Testimonials = () => {
           >
             <X size={32} />
           </button>
-          <div 
-            className="relative max-w-3xl w-full my-auto flex justify-center" 
+          <div
+            className="relative max-w-3xl w-full my-auto flex justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
